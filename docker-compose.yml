@@ -1,0 +1,45 @@
+version: "3.8"
+
+services:
+  apache:
+    image: webdevops/php-apache:8.0
+    container_name: apache
+    ports:
+      - "8888:80"
+    volumes:
+      - ./www:/app
+      - ./apache-custom.conf:/etc/apache2/conf-enabled/custom.conf
+    depends_on:
+      - mysql
+    environment:
+      - PHP_DISPLAY_ERRORS=1
+      - PHP_ERROR_REPORTING=E_ALL
+      - PHP_MEMORY_LIMIT=512M
+      
+
+  mysql:
+    image: mysql:8.0
+    container_name: mysql
+    environment:
+      MYSQL_ROOT_PASSWORD: rootpassword
+      MYSQL_DATABASE: mydatabase
+      MYSQL_USER: user
+      MYSQL_PASSWORD: password
+    ports:
+      - "3306:3306"
+    volumes:
+      - db_data:/var/lib/mysql
+
+  phpmyadmin:
+    image: phpmyadmin/phpmyadmin
+    container_name: phpmyadmin
+    environment:
+      PMA_HOST: mysql
+      MYSQL_ROOT_PASSWORD: rootpassword
+    ports:
+      - "8080:80"
+    depends_on:
+      - mysql
+
+volumes:
+  db_data:
