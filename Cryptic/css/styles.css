@@ -19,6 +19,7 @@ body {
     width: 700px;
     height: 700px;
     margin-bottom: 20px;
+
 }
 
 #linea {
@@ -42,6 +43,11 @@ body {
     pointer-events: all; /* Allow interaction on all circles */
     cursor: pointer;
     box-shadow: 0 0 20px rgba(0, 0, 0, 0.5);
+    background-color: transparent;
+    background-image: url('/bola.jpg');
+    background-size: cover;
+    background-position: center;
+    background-repeat: no-repeat;
 }
 
 .circle:hover {
@@ -60,6 +66,7 @@ body {
     font-weight: bold;
     font-size: 1.2rem;
     font-family: 'Helvetica', sans-serif;
+    color: magenta;
     text-align: center;
 }
 
@@ -69,7 +76,6 @@ body {
     height: 150px;
     top: 275px; /* Centered within the 700px container */
     left: 275px;
-    background-color: transparent;
     z-index: 5; /* Ensure circle1 is above other circles */
 }
 
@@ -78,7 +84,6 @@ body {
     height: 220px;
     top: 240px; /* More space between circles */
     left: 240px;
-    background-color: transparent;
     z-index: 4; /* Ensure circle2 is above larger circles */
 }
 
@@ -87,7 +92,6 @@ body {
     height: 300px;
     top: 200px; /* Centered */
     left: 200px;
-    background-color: transparent;
     z-index: 3; /* Ensure circle3 is above larger circles */
 }
 
@@ -96,7 +100,6 @@ body {
     height: 380px;
     top: 160px; /* More space, centered */
     left: 160px;
-    background-color: transparent;
     z-index: 2; /* Ensure circle4 is above larger circles */
 }
 
@@ -105,7 +108,6 @@ body {
     height: 450px;
     top: 125px; /* Centered with more space */
     left: 125px;
-    background-color: transparent;
     z-index: 1; /* Ensure circle5 is at the bottom */
 }
 
@@ -129,5 +131,4 @@ body {
 
 .btn:hover {
     background-color: #62a997;
-
 }
