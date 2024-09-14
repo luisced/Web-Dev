@@ -20,8 +20,8 @@ document.addEventListener("DOMContentLoaded", () => {
     const rotateLeftBtn = document.getElementById('rotate-left-btn');
     const rotateRightBtn = document.getElementById('rotate-right-btn');
 
-    addRotationButtonEvents(rotateLeftBtn, -5); // Rotar a la izquierda (-1 grado)
-    addRotationButtonEvents(rotateRightBtn, 5); // Rotar a la derecha (1 grado)
+    addRotationButtonEvents(rotateLeftBtn, -5); // Rotar a la izquierda (-5 grados)
+    addRotationButtonEvents(rotateRightBtn, 5); // Rotar a la derecha (5 grados)
 });
 
 // Distribuir letras uniformemente alrededor del círculo
@@ -205,13 +205,19 @@ function checkAlignment() {
         const alignedLetter = getAlignedLetter(circle);
 
         if (alignedLetter) {
-            if (isAligned) {
-                // Cambiar el color de la letra a verde si está correctamente alineada
-                alignedLetter.style.color = 'green';
-            } else {
-                // Restaurar el color original si no está correctamente alineada
-                alignedLetter.style.color = 'black';
-            }
+            // Cambiar el color de todas las letras iguales a la alineada
+            const letters = circle.querySelectorAll('.letter');
+            letters.forEach((letter) => {
+                if (letter.innerText === alignedLetter.innerText) {
+                    if (isAligned) {
+                        // Cambiar el color de las letras coincidentes a verde si están correctamente alineadas
+                        letter.style.color = 'green';
+                    } else {
+                        // Restaurar el color original si no están alineadas correctamente
+                        letter.style.color = 'black';
+                    }
+                }
+            });
         }
 
         if (!isAligned) {
@@ -232,6 +238,6 @@ function checkAlignment() {
     // Redirigir si todos los círculos están correctamente alineados
     if (allCorrect) {
         alert('¡Todos los círculos están correctamente alineados!');
-        window.location.href = "/success.html";
+        window.location.href = "../succes.html";
     }
 }
