@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Círculos con Letras Rotatorias</title>
+  <link rel="stylesheet" href="css/styles.css">
+</head>
+<body>
+    <div class="circle-container">
+        <!-- Línea roja para indicar la posición de las letras -->
+        <div id="linea"></div>
+
+        <!-- Círculos con letras -->
+        <div id="circle1" class="circle" onclick="selectCircle('circle1')">
+            <div class="letters"></div>
+        </div>
+        <div id="circle2" class="circle" onclick="selectCircle('circle2')">
+            <div class="letters"></div>
+        </div>
+        <div id="circle3" class="circle" onclick="selectCircle('circle3')">
+            <div class="letters"></div>
+        </div>
+        <div id="circle4" class="circle" onclick="selectCircle('circle4')">
+            <div class="letters"></div>
+        </div>
+        <div id="circle5" class="circle" onclick="selectCircle('circle5')">
+            <div class="letters"></div>
+        </div>
+    </div>
+
+    <!-- Botones para rotar -->
+    <div class="controls">
+        <button class="btn" onclick="rotate(10)">Rotar  la derecha</button>
+        <button class="btn" onclick="rotate(-10)">Rotar  a la izquierda</button>
+    </div>
+
+  <script src="js/script.js"></script>
+</body>
+</html>

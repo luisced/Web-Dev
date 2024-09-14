@@ -1,0 +1,167 @@
+<!DOCTYPE html>
+<html lang="en">
+	<head>
+		<meta charset="UTF-8" />
+		<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+		<title>Calculator</title>
+		<style>
+			body {
+				background-color: #cecece;
+				margin: 0;
+				padding: 0;
+			}
+			.d-flex {
+				display: flex;
+			}
+			.m-auto {
+				margin: auto;
+			}
+			.contenedor {
+				width: 100vw;
+				height: 100vh;
+			}
+			input[type="text"] {
+				width: 100%;
+				padding: 10px;
+				font-size: 1.5rem;
+				margin-bottom: 10px;
+				opacity: 0.5;
+				transition: opacity 0.3s ease;
+			}
+			table {
+				width: 100%;
+			}
+			button {
+				width: 100%;
+				padding: 20px;
+				font-size: 1.5rem;
+				cursor: pointer;
+				color: #000;
+				background-color: rgb(189, 189, 189);
+				border: 1px solid #000;
+				border-radius: 5px;
+			}
+			button:hover {
+				background-color: rgb(134, 138, 139);
+			}
+			.v-btn {
+				height: 150px;
+			}
+			.h-btn {
+				width: 100px;
+			}
+			td {
+				width: 25%;
+			}
+		</style>
+	</head>
+	<body>
+		<div class="contenedor d-flex">
+			<div class="m-auto" style="width: 300px">
+				<input id="display" type="text" placeholder="0" readonly />
+				<table>
+					<tr>
+						<td><button type="button" onclick="setOperador('/')">/</button></td>
+						<td><button type="button" onclick="setOperador('*')">*</button></td>
+						<td><button type="button" onclick="setOperador('-')">-</button></td>
+						<td><button type="button" onclick="reset()">C</button></td>
+					</tr>
+					<tr>
+						<td><button type="button" onclick="setNumber(7)">7</button></td>
+						<td><button type="button" onclick="setNumber(8)">8</button></td>
+						<td><button type="button" onclick="setNumber(9)">9</button></td>
+						<td rowspan="2">
+							<button type="button" class="v-btn" onclick="setOperador('+')">
+								+
+							</button>
+						</td>
+					</tr>
+					<tr>
+						<td><button type="button" onclick="setNumber(4)">4</button></td>
+						<td><button type="button" onclick="setNumber(5)">5</button></td>
+						<td><button type="button" onclick="setNumber(6)">6</button></td>
+					</tr>
+					<tr>
+						<td><button type="button" onclick="setNumber(1)">1</button></td>
+						<td><button type="button" onclick="setNumber(2)">2</button></td>
+						<td><button type="button" onclick="setNumber(3)">3</button></td>
+						<td rowspan="2">
+							<button type="button" class="v-btn" onclick="calcular()">
+								=
+							</button>
+						</td>
+					</tr>
+					<tr>
+						<td colspan="2">
+							<button type="button" onclick="setNumber(0)">0</button>
+						</td>
+						<td><button type="button" onclick="setNumber('.')">.</button></td>
+					</tr>
+				</table>
+			</div>
+		</div>
+
+		<script>
+			let currentValue = "";
+			let operador = "";
+			let previousValue = "";
+			let justCalculated = false; 
+
+			function setNumber(num) {
+				if (justCalculated) {
+					currentValue = "";
+					justCalculated = false;
+				}
+				currentValue += num;
+				document.getElementById("display").value = currentValue;
+			}
+
+			function setOperador(op) {
+				if (currentValue === "") return;
+				if (justCalculated) justCalculated = false;
+				previousValue = currentValue;
+				currentValue = "";
+				operador = op;
+			}
+
+			function calcular() {
+				let resultado = 0;
+				const prev = parseFloat(previousValue);
+				const curr = parseFloat(currentValue);
+
+				if (isNaN(prev) || isNaN(curr)) return;
+
+				switch (operador) {
+					case "+":
+						resultado = prev + curr;
+						break;
+					case "-":
+						resultado = prev - curr;
+						break;
+					case "*":
+						resultado = prev * curr;
+						break;
+					case "/":
+						resultado = prev / curr;
+						break;
+					default:
+						return;
+				}
+
+				currentValue = resultado;
+				document.getElementById("display").value = resultado;
+				previousValue = "";
+				operador = "";
+				justCalculated = true;
+			}
+
+			function reset() {
+				currentValue = "";
+				previousValue = "";
+				operador = "";
+				document.getElementById("display").value = "";
+				justCalculated = false;
+			}
+		</script>
+	</body>
+</html>

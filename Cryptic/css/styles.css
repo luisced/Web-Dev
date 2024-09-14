@@ -1,0 +1,119 @@
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    height: 100vh;
+    background-color: #f0f0f0;
+}
+
+.circle-container {
+    position: relative;
+    width: 700px;
+    height: 700px;
+    margin-bottom: 20px;
+}
+
+#linea {
+    position: absolute;
+    width: 350px; /* Half of the container */
+    height: 2px;
+    background-color: red;
+    top: 50%; /* Vertically centered */
+    left: 50%; /* Starts from the center */
+    transform: translateX(-100%); /* Moves to the left from the center */
+}
+
+.circle {
+    position: absolute;
+    border-radius: 50%;
+    border: 2px solid black;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    transition: transform 0.5s ease, border-color 0.3s ease;
+    pointer-events: all; /* Allow interaction on all circles */
+    cursor: pointer;
+}
+
+.circle:hover {
+    transform: scale(1.05); /* Slight scaling effect on hover */
+    border-color: red; /* Change border color on hover */
+}
+
+.circle .letters {
+    position: relative;
+    pointer-events: none; /* Prevent letters from blocking interactions */
+}
+
+.letter {
+    position: absolute;
+    transform-origin: 0 50%;
+    font-weight: bold;
+    font-size: 1.2rem;
+    text-align: center;
+}
+
+/* Adjust all circles to be concentric */
+#circle1 {
+    width: 150px;
+    height: 150px;
+    top: 275px; /* Centered within the 700px container */
+    left: 275px;
+    background-color: transparent;
+    z-index: 5; /* Ensure circle1 is above other circles */
+}
+
+#circle2 {
+    width: 220px;
+    height: 220px;
+    top: 240px; /* More space between circles */
+    left: 240px;
+    background-color: transparent;
+    z-index: 4; /* Ensure circle2 is above larger circles */
+}
+
+#circle3 {
+    width: 300px;
+    height: 300px;
+    top: 200px; /* Centered */
+    left: 200px;
+    background-color: transparent;
+    z-index: 3; /* Ensure circle3 is above larger circles */
+}
+
+#circle4 {
+    width: 380px;
+    height: 380px;
+    top: 160px; /* More space, centered */
+    left: 160px;
+    background-color: transparent;
+    z-index: 2; /* Ensure circle4 is above larger circles */
+}
+
+#circle5 {
+    width: 450px;
+    height: 450px;
+    top: 125px; /* Centered with more space */
+    left: 125px;
+    background-color: transparent;
+    z-index: 1; /* Ensure circle5 is at the bottom */
+}
+
+.controls {
+    display: flex;
+    gap: 10px;
+}
+
+.btn {
+    background-color: white;
+    border: 1px solid black;
+    padding: 10px;
+    cursor: pointer;
+}
