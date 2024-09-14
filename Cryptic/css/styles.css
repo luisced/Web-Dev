@@ -12,7 +12,6 @@ body {
     height: 100vh;
     background-color: #D9AFD9;
     background-image: linear-gradient(0deg, #D9AFD9 0%, #97D9E1 100%);
-
 }
 
 .circle-container {
@@ -27,7 +26,7 @@ body {
     width: 350px; /* Half of the container */
     height: 2px;
     background-color: red;
-    top: 50%; /* Vertically centered */
+    top: 58%; /* Vertically centered */
     left: 50%; /* Starts from the center */
     transform: translateX(-100%); /* Moves to the left from the center */
 }
@@ -43,7 +42,6 @@ body {
     pointer-events: all; /* Allow interaction on all circles */
     cursor: pointer;
     box-shadow: 0 0 20px rgba(0, 0, 0, 0.5);
-
 }
 
 .circle:hover {
@@ -111,14 +109,25 @@ body {
     z-index: 1; /* Ensure circle5 is at the bottom */
 }
 
+/* Align controls to the right */
 .controls {
     display: flex;
-    gap: 10px;
+    justify-content: center;
+    width: 700px; /* Match the width of the container */
+    gap: 50px;
+    margin-bottom: 20px;
 }
 
 .btn {
-    background-color: white;
+    background-color: #7bddc4;
     border: 1px solid black;
     padding: 10px;
     cursor: pointer;
+    border-radius: 5px;
+    transition: background-color 0.3s ease;
+}
+
+.btn:hover {
+    background-color: #62a997;
+
 }
