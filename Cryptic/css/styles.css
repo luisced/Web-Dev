@@ -44,7 +44,7 @@ body {
 
 .circle:hover {
     transform: scale(1.05); /* Slight scaling effect on hover */
-    border-color: red; /* Change border color on hover */
+    border-color: cyan; /* Change border color on hover */
 }
 
 .circle .letters {

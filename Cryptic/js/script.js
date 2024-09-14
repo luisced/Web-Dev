@@ -14,6 +14,15 @@ document.addEventListener("DOMContentLoaded", () => {
     addCircleClickEvent('circle3');
     addCircleClickEvent('circle4');
     addCircleClickEvent('circle5');
+
+    // Add click event listener to the document to deselect circle when clicking elsewhere
+    document.addEventListener('click', (event) => {
+        // If a circle is selected and the click is outside a circle, deselect the circle
+        if (selectedCircle && !event.target.closest('.circle')) {
+            selectedCircle.style.borderColor = '';  // Reset the border color
+            selectedCircle = null;  // Deselect the circle
+        }
+    });
 });
 
 // Distribute letters evenly around the circle
@@ -44,8 +53,13 @@ function distributeLetters(circleId, letterCount) {
 // Add click event listener to each circle to make it selectable
 function addCircleClickEvent(circleId) {
     const circle = document.getElementById(circleId);
-    circle.addEventListener('click', () => {
-        selectedCircle = circle;  // Set the selected circle
+    circle.addEventListener('click', (event) => {
+        event.stopPropagation(); // Prevent triggering the document click listener
+        // Deselect any previously selected circle
+        if (selectedCircle) {
+            selectedCircle.style.borderColor = ''; // Reset the border color of previously selected circle
+        }
+        selectedCircle = circle;  // Set the newly selected circle
         circle.style.borderColor = 'red';  // Change border color to indicate selection
     });
 }
@@ -74,8 +88,6 @@ function normalizeAngle(angle) {
 
 // Check if all circles are correctly aligned based on valid angles and redirect to success
 function checkAlignment() {
-    // pswd: ACGHF
-
     let allCorrect = true;
 
     // Valid angles for circle1
