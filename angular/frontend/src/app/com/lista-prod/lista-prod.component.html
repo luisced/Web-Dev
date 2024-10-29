@@ -1,0 +1,21 @@
+<div class="row my-3">
+    <div class="col py-3 d-flex">
+        <table class="table table-hover">
+            <thead>
+                <tr>
+                    <th>ID</th>
+                    <th>Nombre</th>
+                    <th>Cantidad</th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr *ngFor="let producto of productos">
+                    <td>{{ producto.id }}</td>
+                    <td>{{ producto.nombre }}</td>
+                    <td>{{ producto.cantidad }}</td>
+                    <td><button class="btn btn-outline-primary">Borrar</button></td>
+                </tr>
+            </tbody>
+        </table>
+    </div>
+</div>
