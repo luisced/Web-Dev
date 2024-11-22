@@ -1,0 +1,40 @@
+/* Table styling */
+.custom-table {
+    width: 100%;
+    background-color: #f9f9f9;
+    border-radius: 8px;
+    overflow: hidden;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+}
+
+.table-header th {
+    background-color: #343a40;
+    color: #fff;
+    text-align: center;
+    padding: 12px;
+    font-size: 16px;
+}
+
+.table-row td {
+    padding: 12px;
+    text-align: center;
+    font-size: 14px;
+    color: #333;
+}
+
+.table-row:hover {
+    background-color: #f1f1f1;
+}
+
+.delete-button {
+    font-size: 12px;
+    padding: 4px 8px;
+    color: #d9534f;
+    border-color: #d9534f;
+    transition: background-color 0.3s ease, color 0.3s ease;
+}
+
+.delete-button:hover {
+    background-color: #d9534f;
+    color: #fff;
+}
